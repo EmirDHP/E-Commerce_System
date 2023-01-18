@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacionAdmin", "CapaPresentacionAdmin\CapaPresentacionAdmin.csproj", "{73FC0146-270D-4BB7-ADF0-7DD532B59D2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaPresentacionTienda", "CapaPresentacionTienda\CapaPresentacionTienda.csproj", "{4016A91C-F3A3-48A0-9A4B-156D818F332E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{AFCB9381-A64E-48BE-AC88-8469E218C3FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaEntidad", "CapaEntidad\CapaEntidad.csproj", "{57BC39D0-7639-47DC-A597-9982AF333003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocio", "CapaNegocio\CapaNegocio.csproj", "{57E594B3-29DF-4602-9D11-A226C190C9C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FOTOS_CARRITO", "FOTOS_CARRITO", "{B9AA2CE1-4328-49B4-967B-2925A4416896}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73FC0146-270D-4BB7-ADF0-7DD532B59D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FC0146-270D-4BB7-ADF0-7DD532B59D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FC0146-270D-4BB7-ADF0-7DD532B59D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FC0146-270D-4BB7-ADF0-7DD532B59D2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4016A91C-F3A3-48A0-9A4B-156D818F332E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4016A91C-F3A3-48A0-9A4B-156D818F332E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4016A91C-F3A3-48A0-9A4B-156D818F332E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4016A91C-F3A3-48A0-9A4B-156D818F332E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFCB9381-A64E-48BE-AC88-8469E218C3FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFCB9381-A64E-48BE-AC88-8469E218C3FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFCB9381-A64E-48BE-AC88-8469E218C3FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFCB9381-A64E-48BE-AC88-8469E218C3FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57BC39D0-7639-47DC-A597-9982AF333003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57BC39D0-7639-47DC-A597-9982AF333003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57BC39D0-7639-47DC-A597-9982AF333003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57BC39D0-7639-47DC-A597-9982AF333003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E594B3-29DF-4602-9D11-A226C190C9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E594B3-29DF-4602-9D11-A226C190C9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E594B3-29DF-4602-9D11-A226C190C9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E594B3-29DF-4602-9D11-A226C190C9C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
