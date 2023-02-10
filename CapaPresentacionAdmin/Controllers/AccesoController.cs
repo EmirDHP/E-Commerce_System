@@ -48,12 +48,10 @@ namespace CapaPresentacionAdmin.Controllers
                 }
 
                 ViewBag.Error = null;
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
-            
+
         }
-
-
 
         [HttpPost]
         public ActionResult CambiarClave(string idusuario, string claveactual, string nuevaclave, string confirmarclave)
@@ -65,21 +63,36 @@ namespace CapaPresentacionAdmin.Controllers
             if (oUsuario.Clave != CN_Recursos.ConvertirSha256(claveactual))
             {
                 TempData["IdUsuario"] = idusuario;
-
+                ViewData["vclave"] = "";
                 ViewBag.Error = "¡La actual contraseña no es correcta!";
                 return View();
             }
             else if (nuevaclave != confirmarclave)
             {
                 TempData["IdUsuario"] = idusuario;
-
+                ViewData["vclave"] = claveactual;
                 ViewBag.Error = "¡Las contraseñas no coinciden!";
                 return View();
             }
+            ViewData["vclave"] = "";
 
-            return View();
+            nuevaclave = CN_Recursos.ConvertirSha256(nuevaclave);
+
+            string mensaje = string.Empty;
+
+            bool respuesta = new CN_Usuarios().CambiarClave(int.Parse(idusuario), nuevaclave, out mensaje);
+
+            if (respuesta)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["IdUsuario"] = idusuario;
+                ViewBag.Error = mensaje;
+                return View();
+            }
         }
-
 
     }
 }
