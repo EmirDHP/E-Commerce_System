@@ -22,7 +22,7 @@ namespace CapaPresentacionAdmin.Controllers
             return View();
         }
 
-        public ActionResult Restablecer()
+        public ActionResult Reestablecer()
         {
             return View();
         }
@@ -92,6 +92,35 @@ namespace CapaPresentacionAdmin.Controllers
                 ViewBag.Error = mensaje;
                 return View();
             }
+        }
+
+        [HttpPost]
+        public ActionResult Reestablecer(string correo)
+        {
+            Usuario ousuario = new Usuario();
+
+            ousuario = new CN_Usuarios().Listar().Where(item => item.Correo == correo).FirstOrDefault();
+
+            if (ousuario == null)
+            {
+                ViewBag.Error = "No se encontro un usuiario relacionado a ese correo";
+                return View();
+            }
+
+            string mensaje = string.Empty;
+            bool respuesta = new CN_Usuarios().ReestablecerClave(ousuario.IdUsuario, correo, out mensaje);
+
+            if (respuesta)
+            {
+                ViewBag.Error = null;
+                return RedirectToAction("Index", "Acceso");
+            }
+            else
+            {
+                ViewBag.Error = mensaje;
+                return View();
+            }
+
         }
 
     }
