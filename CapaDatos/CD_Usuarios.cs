@@ -56,7 +56,6 @@ namespace CapaDatos
             return lista;
         }
 
-
         public int Registrar(Usuario obj, out string Mensaje)
         {
             int idautogenerado = 0;

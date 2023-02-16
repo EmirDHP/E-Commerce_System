@@ -108,7 +108,7 @@ namespace CapaPresentacionAdmin.Controllers
 
             if (ousuario == null)
             {
-                ViewBag.Error = "No se encontro un usuiario relacionado a ese correo";
+                ViewBag.Error = "No se encontro un usuario relacionado a ese correo";
                 return View();
             }
 
