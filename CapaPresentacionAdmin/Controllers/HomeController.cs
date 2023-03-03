@@ -46,6 +46,7 @@ namespace CapaPresentacionAdmin.Controllers
             {
                 resultado = new CN_Usuarios().Registrar(objeto, out mensaje);
             }
+
             else
             {
                 resultado = new CN_Usuarios().Editar(objeto, out mensaje);
