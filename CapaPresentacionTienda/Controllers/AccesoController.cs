@@ -172,6 +172,5 @@ namespace CapaPresentacionTienda.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Acceso");
         }
-
     }
 }
