@@ -64,7 +64,6 @@ namespace CapaPresentacionTienda.Controllers
             }
         }
 
-
         [HttpPost]
         public ActionResult Index(string correo, string clave)
         {
