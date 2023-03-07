@@ -45,14 +45,14 @@ namespace CapaNegocio
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add(correo);
-                mail.From = new MailAddress("emir.hernandez@uttn.mx");
+                mail.From = new MailAddress("mail");
                 mail.Subject = asunto;
                 mail.Body = mensaje;
                 mail.IsBodyHtml = true;
 
                 var smtp = new SmtpClient()
                 {
-                    Credentials = new NetworkCredential("emir.hernandez@uttn.mx", "Uberstrikelol45"),
+                    Credentials = new NetworkCredential("mail", "pass"),
                     Host = "smtp.office365.com",
                     Port = 587,
                     EnableSsl = true
