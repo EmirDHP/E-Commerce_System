@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using CapaEntidad;
 using System.Data.SqlClient;
 using System.Data;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace CapaDatos
 {
@@ -148,6 +150,52 @@ namespace CapaDatos
                 Mensaje = ex.Message;
             }
             return resultado;
+        }
+
+
+        public List<Marca> ListarMarcaPorCategoria(int idecategoria)
+        {
+            List<Marca> lista = new List<Marca>();
+
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.AppendLine("select distinct m.IdMarca, m.Descripcion from PRODUCTO p");
+                    sb.AppendLine("inner join CATEGORIA c on c.IdCategoria = p.IdCategoria");
+                    sb.AppendLine("inner join MARCA m on m.IdMarca = p.IdMarca and m.Activo = 1");
+                    sb.AppendLine("where c.IdCategoria = iif(@idcategoria = 0, c.IdCategoria, @idcategoria)");                 
+
+                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
+                    cmd.Parameters.AddWithValue("@idecategoria", idecategoria);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(
+                                new Marca()
+                                {
+                                    IdMarca = Convert.ToInt32(dr["IdMarca"]),
+                                    Descripcion = dr["Descripcion"].ToString()
+                                }
+                            );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+                lista = new List<Marca>();
+            }
+
+            return lista;
         }
 
 
