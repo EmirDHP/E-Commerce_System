@@ -127,8 +127,8 @@
             MostrarCategorias();
         })
 
+        // Funcion Categorias
         function MostrarCategorias() {
-
             jQuery.ajax({
                 url: "@Url.Action("ListaCategorias", "Tienda")",
                 type: "GET",
@@ -150,19 +150,50 @@
                         ).appendTo("#contenedor_categoria")
                     })
 
-                    //<div class="form-check">
-                    //    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    //        <label class="form-check-label" for="flexRadioDefault1">
-                    //            Default radio
-                    //        </label>
-                    //</div>
+                    MostrarMarca();
+
                 }, beforeSend: function () {
                     $("#contenedor_categoria").LoadingOverlay("show");
                 }
             })
-
         }
 
+        // Funcion obtener marcas de acuerdo a la categoria
+        function MostrarMarca() {
+
+            var _idcategoria = $("input[name=categoria]:checked").val()
+
+            jQuery.ajax({
+                url: "@Url.Action("ListaMarcaPorCategorias", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idcategoria: _idcategoria }),
+                dataType: "json",
+                contentType: "application/json; chartset=utf-8",
+                success: function (response) {
+                    $("#contenedor_marca").html("");
+                    $("#contenedor_marca").LoadingOverlay("hide");
+
+                    $("<div>").addClass("form-check").append(
+                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marca", "value": "0", "id": "mx", "checked": "cheked" }),
+                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "mx" })
+                    ).appendTo("#contenedor_marca")
+
+                    $.each(response.data, function (i, element) {
+                        $("<div>").addClass("form-check").append(
+                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marca", "value": element.IdMarca, "id": "m" + i }),
+                            $("<label>").addClass("form-check-label").text(element.Descripcion).attr({ "for": "m" + i })
+                        ).appendTo("#contenedor_marca")
+                    })
+                }, beforeSend: function () {
+                    $("#contenedor_marca").LoadingOverlay("show");
+                }
+            })
+        }
+
+
+        $(document).on("change", "input[name = categoria]", function () {
+            MostrarMarca();
+        })
     </script>
 
 }
