@@ -8,7 +8,7 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Compra cone estilo</h1>
+            <h1 class="display-4 fw-bolder">Compra con estilo</h1>
             <p class="lead fw-normal text-white-50 mb-0">Encuentra los mejores productos</p>
         </div>
     </div>
@@ -125,6 +125,7 @@
 
         $(document).ready(function () {
             MostrarCategorias();
+            MostrarProductos(0, 0)
         })
 
         // Funcion Categorias
@@ -206,26 +207,51 @@
                 dataType: "json",
                 contentType: "application/json; chartset=utf-8",
                 success: function (response) {
-                    $("#contenedor_marca").html("");
-                    $("#contenedor_marca").LoadingOverlay("hide");
-
-                    $("<div>").addClass("form-check").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marca", "value": "0", "id": "mx", "checked": "cheked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "mx" })
-                    ).appendTo("#contenedor_marca")
+                    $("#contenedor_producto").html("");
+                    $("#contenedor_producto").LoadingOverlay("hide");
 
                     $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marca", "value": element.IdMarca, "id": "m" + i }),
-                            $("<label>").addClass("form-check-label").text(element.Descripcion).attr({ "for": "m" + i })
-                        ).appendTo("#contenedor_marca")
+
+                        $("<div>").addClass("col mb-5").append(
+                            $("<div>").addClass("card h-100").append(
+                                $("<img>").addClass("card-img-top").attr({ "src": "data:image/" + element.Extension + ";base64," + element.Base64 }),
+                                $("<div>").addClass("card-body p-4").append(
+                                    $("<div>").addClass("text-center").append(
+                                        $("<h5>").addClass("fw-bolder").text(element.Nombre),
+                                        "$ " + element.Precio.toFixed(2) + "USD"
+                                    )
+                                ),
+                                 $("<div>").addClass("card-footer p-2 pt-0 border-top-0 bg-transparent").append(
+                                 
+                                     $("<div>").addClass("d-grid gap-2").append(
+                                         @if (Session["Cliente"] != null)
+                                         {
+                                             @:$("<button>").addClass("btn btn-success mt-auto agregarcarrito").data("idproducto", element.IdProducto).text("Agregar a carrito"),
+                                         }
+                                 
+                                         $("<a>").addClass("btn btn-dark mt-auto")
+                                             .attr({ "href": "@Url.Action("DetalleProducto","Tienda")" + "?idproducto" + element.IdProducto })
+                                             .text("Ver detalle")
+                                     )
+                                 
+                                 )
+                            )
+                        ).appendTo("#contenedor_producto")
+
                     })
                 },
                 beforeSend: function () {
-                    $("#contenedor_marca").LoadingOverlay("show");
+                    $("#contenedor_producto").LoadingOverlay("show");
                 }
             })
         }
+
+
+        $("#btnaplicarfiltro").click(function () {
+            var _idcategoria = $("input[name=categoria]:checked").val()
+            var _idmarca = $("input[name=marca]:checked").val()
+            MostrarProductos(_idcategoria, _idmarca)
+        })
     </script>
 
 }
