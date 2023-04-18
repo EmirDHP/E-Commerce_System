@@ -231,7 +231,7 @@
                                          }
 
                                          $("<a>").addClass("btn btn-dark mt-auto")
-                                             .attr({ "href": "@Url.Action("DetalleProducto","Tienda")" + "?idproducto" + element.IdProducto })
+                                             .attr({ "href":"@Url.Action("DetalleProducto","Tienda")" + "?idproducto=" + element.IdProducto })
                                              .text("Ver detalle")
                                      )
 
