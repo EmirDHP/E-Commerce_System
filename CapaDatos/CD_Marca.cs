@@ -153,7 +153,7 @@ namespace CapaDatos
         }
 
 
-        public List<Marca> ListarMarcaPorCategoria(int idecategoria)
+        public List<Marca> ListarMarcaPorCategoria(int idcategoria)
         {
             List<Marca> lista = new List<Marca>();
 
@@ -169,7 +169,7 @@ namespace CapaDatos
                     sb.AppendLine("where c.IdCategoria = iif(@idcategoria = 0, c.IdCategoria, @idcategoria)");                 
 
                     SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
-                    cmd.Parameters.AddWithValue("@idecategoria", idecategoria);
+                    cmd.Parameters.AddWithValue("@idcategoria", idcategoria);
                     cmd.CommandType = CommandType.Text;
 
                     oconexion.Open();

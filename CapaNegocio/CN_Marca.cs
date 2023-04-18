@@ -66,9 +66,9 @@ namespace CapaNegocio
         }
 
 
-        public List<Marca> ListarMarcaPorCategoria(int idecategoria)
+        public List<Marca> ListarMarcaPorCategoria(int idcategoria)
         {
-            return objCapaDato.ListarMarcaPorCategoria(idecategoria);
+            return objCapaDato.ListarMarcaPorCategoria(idcategoria);
         }
 
     }
