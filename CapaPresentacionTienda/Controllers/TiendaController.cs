@@ -166,7 +166,8 @@ namespace CapaPresentacionTienda.Controllers
 
 
         [HttpPost]
-        public JsonResult ElimnarCarrito(int idproducto) {
+        public JsonResult ElimnarCarrito(int idproducto)
+        {
 
             int idcliente = ((Cliente)Session["Cliente"]).IdCliente;
 
@@ -176,8 +177,43 @@ namespace CapaPresentacionTienda.Controllers
 
             respuesta = new CN_Carrito().EliminarCarrito(idcliente, idproducto);
 
-            return Json(new {respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
-
+            return Json(new { respuesta = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult ObtenerDepartamento()
+        {
+            List<Departamento> oLista = new List<Departamento>();
+
+            oLista = new CN_Ubicacion().ObtenerDepertamento();
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerProvincias(string IdDepartamento)
+        {
+            List<Provincia> oLista = new List<Provincia>();
+
+            oLista = new CN_Ubicacion().ObtenerProvincia(IdDepartamento);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerDistrito(string IdDepartamento, string IdProvincia)
+        {
+            List<Distrito> oLista = new List<Distrito>();
+
+            oLista = new CN_Ubicacion().ObtenerDistrito(IdDepartamento, IdProvincia);
+
+            return Json(new { lista = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Carrito()
+        {
+            return View();
+        }
+
     }
 }
