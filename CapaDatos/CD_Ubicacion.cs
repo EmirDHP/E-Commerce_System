@@ -37,7 +37,7 @@ namespace CapaDatos
                                 new Departamento()
                                 {
                                     IdDepartamento = dr["IdDepartamento"].ToString(),
-                                    Descripcion = dr["Nombres"].ToString()
+                                    Descripcion = dr["Descripcion"].ToString()
                                 });
                         }
                     }
@@ -76,7 +76,7 @@ namespace CapaDatos
                                 new Provincia()
                                 {
                                     IdProvincia = dr["IdProvincia"].ToString(),
-                                    Descripcion = dr["Nombres"].ToString()
+                                    Descripcion = dr["Descripcion"].ToString()
                                 });
                         }
                     }
@@ -99,7 +99,7 @@ namespace CapaDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
                 {
-                    string query = "select * from DISTRITO where IdProvincia = @iddprovincia and IdDepartamento = @iddepartamento";
+                    string query = "select * from DISTRITO where IdProvincia = @idprovincia and IdDepartamento = @iddepartamento";
 
                     SqlCommand cmd = new SqlCommand(query, oconexion);
                     cmd.Parameters.AddWithValue("@iddepartamento", iddepartamento);
@@ -115,8 +115,8 @@ namespace CapaDatos
                             lista.Add(
                                 new Distrito()
                                 {
-                                    IdDistrito = dr["IdProvincia"].ToString(),
-                                    Descripcion = dr["Nombres"].ToString()
+                                    IdDistrito = dr["IdDistrito"].ToString(),
+                                    Descripcion = dr["Descripcion"].ToString()
                                 });
                         }
                     }

@@ -191,7 +191,7 @@ namespace CapaPresentacionTienda.Controllers
         }
 
         [HttpPost]
-        public JsonResult ObtenerProvincias(string IdDepartamento)
+        public JsonResult ObtenerProvincia(string IdDepartamento)
         {
             List<Provincia> oLista = new List<Provincia>();
 
