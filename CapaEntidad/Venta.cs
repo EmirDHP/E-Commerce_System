@@ -10,7 +10,7 @@ namespace CapaEntidad
     {
         public int IdVenta { get; set; }
         public int IdCliente { get; set; }
-        public int ToltalProducto { get; set; }
+        public int TotalProducto { get; set; }
         public decimal MontoTotal { get; set; }
         public string Contacto { get; set; }
         public string IdDistrito { get; set; }
